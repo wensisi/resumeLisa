@@ -3,6 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>个人简历</title>
+	<!-- 获取地理位置 -->
+	 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SqCXyPDUaIWOeFwU5HldGY9E546NR3IG"></script>  
+
 	<link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body>
@@ -13,28 +16,40 @@
 			<h2>温丝丝</h2>
 			<div class="photo"><img src="imgs/wss.jpg" width="100%" height="100%"></div>
 			<h3>phone</h3>
-			<div class="detail">15814496704</div>
+			<div class="detail"><a href='wtai://wp/mc;tel:15814496704'>15814496704</a></div>
+			<!-- <div class="detail"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=578426032&amp;site=qq&amp;menu=yes" target="_blank">8482009623</a> -->
+			<div class="detail"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=578426032&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:578426032:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+			<!-- 访问qq推广：http://shang.qq.com/v3/widget.html -->
 			<h3>email</h3>
-			<div class="detail">578426032@qq.com</div>
+			<div class="detail"><a href='sms:wensisi0914@163.com'>wensisi0914@163.com</a></div>
 			<h3>address</h3>
 			<div class="detail">深圳市龙岗区坂田街道马蹄山七巷四号
 			</div>
+			<div class="detail"><div id="mapId" class="map-id"></div></div>
 			</div>
 		</aside>
 		<article>
 			<nav>
 				<ul class="clear">
 					<li>
-						<a href="index.html">
+						<a  href="javascriopt:void(0)" onclick="changeshow('resumeShow')">
 							<span class="glyphicon glyphicon-file"></span>
 							<span>Resume</span></a>
 					</li>
 					<li>
-						<a href="index.html"><i class="glyphicon glyphicon-print"></i><span>Email me</span></a>
+						<a href="javascriopt:void(0)" onclick="changeshow('projectShow')"><i class="glyphicon glyphicon-print"></i><span>Project Show</span></a>
 					</li>
 				</ul>
 			</nav>
-			<div class="content">
+			<div id="projectShow" class="content subContent" style="display: none;" >
+				<div class="list-wrap">
+					<div class="title">手机端项目，请在手机端打开</div>
+					<ul>
+						<li class="item"><i class="program"></i><a href='star.html' target="_blank">1.五星标杆</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="resumeShow" class="content">
 				<div class="section section1">
 					<div class="title"><i class="education"></i>教育经历</div>
 					<div class="detail">
@@ -65,6 +80,7 @@
 				<p class="explain">负责公司后台系统管理界面编写优化。</p>
 				<p class="subTitle">2015.9-至今 </p>
 				<p class="explain">自学html/html5，css/css3，js并做一些简单的网页：新闻网页，购物网页。应用到dreamwear，sublime等开发工具，经常访问w3school，菜鸟教程，慕课网自学网站。
+				<p class="explain"><a href="star.html">手机端动态页面</a></p>
 				<p class="subTitle">2015.07-2015.11 深圳市英维克科技服务有限公司</p>
 				<p class="explain">岗位：软件测试工程师+web前端开发；</p>
 				<p class="explain">描述：应用软件单元测试，集成测试方法，进行逻辑覆盖，条件组合，软件兼容性等测试,公司内部编写电子流管理系统，负责学习前端技术，实现简单的界面展示。</p>
@@ -120,10 +136,6 @@
                     <p>○ 爱好：跑步、游泳；上网、逛贴吧、看书&nbsp;&nbsp;&nbsp;&nbsp;○ 人生信条：用知识武装头脑。</p> 
 					</div>
 				</div>
-                                              
-
-                                                
-
 
 			</div>
 			
@@ -131,5 +143,36 @@
 		</article>
 	<footer></footer>
 </div>
+<script type="text/javascript">
+	function changeshow(thisDom)
+	{
+		document.getElementById("projectShow").style.display="none";
+		document.getElementById("resumeShow").style.display="none";
+		document.getElementById(thisDom).style.display="block";
+
+	}
+	var map = new BMap.Map("mapId");  // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+	map.enableScrollWheelZoom(true);
+	
+	// 用经纬度设置地图中心点
+	map.clearOverlays(); 
+	var new_point = new BMap.Point(114.071517,22.658126);
+	var marker = new BMap.Marker(new_point);  // 创建标注
+	map.addOverlay(marker);              // 将标注添加到地图中
+	map.panTo(new_point);    
+	//关于状态码
+	//BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+	//BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+	//BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+	//BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+	//BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+	//BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+	//BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+	//BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+	//BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+// 114.02597366  22.54605355
+	//map.centerAndZoom("深圳市龙岗区坂田街道马蹄山七巷四号",15);      // 初始化地图,用城市名设置地图中心点
+</script>
 </body>
 </html>

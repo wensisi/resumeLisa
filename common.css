@@ -36,13 +36,14 @@ a:hover{
 
 .container{
 	width: 100%;
+	height: 100%;
 	margin: 0 auto;
 	position: relative;
 }
 aside{
 	position: fixed;
 	top: 0;
-	width: 200px;
+	width: 260px;
 	height: 100%;
 	background: #6ecadc;
 	overflow-y: scroll;
@@ -71,8 +72,8 @@ h2{
 }
 article{
 	margin: 0px;
-	margin-left: 200px;
-	box-shadow: 2px 3px 1px #333;
+	margin-left: 260px;
+	/*box-shadow: 2px 3px 1px #333;*/
 }
 nav{
 	padding: 30px;
@@ -84,6 +85,10 @@ nav ul li{
 }
 nav a:hover{
 	color: #6ecadc;
+}
+.map-id{
+	width: 100%;
+	height: 180px;
 }
 .glyphicon:before
 {
@@ -155,7 +160,7 @@ nav a:hover{
 	background-image: url(imgs/选择.png);
 	background-size: contain;
 }
-.content .title i{
+.content i{
 	display: inline-block;
 	width: 30px;
 	height: 30px;
@@ -193,4 +198,19 @@ nav a:hover{
 .content .explain
 {
 	padding-left: 2rem;
+}
+
+.list-wrap{
+	width: 100%;
+	padding: 30px;
+
+}
+.subContent .title{
+	width: 60%;
+	/*height: 40px;*/
+	background: #6ecadc;
+	color: white;
+}
+.subContent .item{
+	padding: 16px 0;
 }
